@@ -1,20 +1,44 @@
+<?php
+  session_start();
+
+  require 'database.php';
+
+  if (isset($_SESSION['user_id'])) {
+    $records = $conn->prepare('SELECT id, curp, password FROM users WHERE id = :id');
+    $records->bindParam(':id', $_SESSION['user_id']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
+
+    $user = null;
+
+    if (count($results) > 0) {
+      $user = $results;
+    }
+  }
+?>
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Instituto Tecnologico de Hermosillo</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ITH | Registro de Aspirantes</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-
+  </head>
+  <body>
     <?php require 'partials/header.php' ?>
-    
-    <h1>Inicia Sesion</h1>
-    <a href="login.php">Login</a> o
-    <a href="signup.php">Registrar Aspirante</a>
 
-</body>
+    <?php if(!empty($user)): ?>
+      <br> Bienvenido <?= $user['curp']; ?>
+      <br>Haz sido registrado, cierra sesión en
+      <a href="logout.php">
+        Salir
+      </a>
+    <?php else: ?>
+      <h1>Por favor, selecciona una opción</h1>
+
+      <a href="login.php">Iniciar Sesión</a> o
+      <a href="signup.php">Registrar Aspirante</a>
+    <?php endif; ?>
+  </body>
 </html>
