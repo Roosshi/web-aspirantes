@@ -22,7 +22,11 @@
     <meta charset="UTF-8">
     <title>ITH | Verificacion de datos del aspirante</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+    crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -41,15 +45,29 @@
                 <th scope="col">Apellido Paterno</th>
                 <th scope="col">Apellido Materno</th>
                 <th scope="col">Curp</th>
+                <th scope="col">Estado</th>
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <th scope="row">11</th>
+                <td>Romualdo</td>
+                <td>Beltran</td>
+                <td>Felix</td>
+                <td>BEFR960912HSRLLM01</td>
+                <td>
+                  <i class="fas fa-times"></i> No
+                </td>
+              </tr>
               <tr>
                 <th scope="row">13</th>
                 <td>Martin Francisco</td>
                 <td>Hurtado</td>
                 <td>Arellano</td>
                 <td>HUAM951008HSRRRR09</td>
+                <td>
+                  <i class="fas fa-check"></i> Ok
+                </td>
               </tr>
             </tbody>
           </table>
