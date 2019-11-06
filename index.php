@@ -23,6 +23,7 @@
     <meta charset="utf-8">
     <title>ITH | Registro de Aspirantes</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
@@ -30,10 +31,10 @@
 
     <?php if(!empty($user)): ?>
       <br> Bienvenido <?= $user['curp']; ?>
-      <br>Haz sido registrado, cierra sesión en
-      <a href="logout.php">
-        Salir
-      </a>
+      <br> Haz sido registrado,
+      
+      <a href="checkup.php">Verifica tus datos</a> o
+      <a href="logout.php"> Cierra sesión </a>
     <?php else: ?>
       <h1>Por favor, selecciona una opción</h1>
 
