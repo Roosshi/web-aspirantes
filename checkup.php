@@ -35,44 +35,25 @@
     
     <?php if(!empty($user)):?>
         
-        <h1>Aspirantes</h1>
-        <div class="container">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre(s)</th>
-                <th scope="col">Apellido Paterno</th>
-                <th scope="col">Apellido Materno</th>
-                <th scope="col">Curp</th>
-                <th scope="col">Estado</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">11</th>
-                <td>Romualdo</td>
-                <td>Beltran</td>
-                <td>Felix</td>
-                <td>BEFR960912HSRLLM01</td>
-                <td>
-                  <i class="fas fa-times"></i> No
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">13</th>
-                <td>Martin Francisco</td>
-                <td>Hurtado</td>
-                <td>Arellano</td>
-                <td>HUAM951008HSRRRR09</td>
-                <td>
-                  <i class="fas fa-check"></i> Ok
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      <h1>Aspirantes</h1>
 
-        </div>
+      <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Curp</th>
+              <th scope="col">Nombre(s)</th>
+              <th scope="col">Apellido Paterno</th>
+              <th scope="col">Apellido Materno</th>
+              <th scope="col">Carrera</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- PHP aqui para llenar la tabla con rows de la base de datos. -->
+          </tbody>
+        </table>
+      </div>
 
     <?php else:
         // Redirige al Login si no ha iniciado sesion.
