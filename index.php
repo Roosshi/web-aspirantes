@@ -4,7 +4,7 @@
   require 'database.php';
 
   if (isset($_SESSION['user_id'])) {
-    $records = $conn->prepare('SELECT id, curp, password FROM users WHERE id = :id');
+    $records = $conn->prepare('SELECT * FROM users WHERE id = :id');
     $records->bindParam(':id', $_SESSION['user_id']);
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
@@ -30,7 +30,7 @@
     <?php require 'partials/header.php' ?>
 
     <?php if(!empty($user)): ?>
-      <br> Bienvenido <?= $user['curp']; ?>
+      <br> Bienvenido <?= $user['nombres']; ?>
       <br> Haz sido registrado,
       
       <a href="checkup.php">Verifica tus datos</a> o
