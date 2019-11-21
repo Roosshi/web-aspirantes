@@ -46,6 +46,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `curp`, `password`, `nombres`, `apellido_paterno`, `apellido_materno`, `tipo`, `carrera`) VALUES
 (1, 'BEFR960912HSRLLM01', '$2y$10$aKrHRddYtwU7lPm2yfZ8D.L/t0sx33sf8UoAC1.vAQDaTozCFz.x6', 'Romualdo', 'Beltran', 'Felix', 'aspirante', 'Ing. en sistemas');
 
+-- UPDATE users SET tipousuario = "administrador" where curp = "david25";
 --
 -- Índices para tablas volcadas
 --

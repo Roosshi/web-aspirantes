@@ -27,9 +27,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
-    <?php require 'partials/header.php' ?>
-
+    
     <?php if(!empty($user)): ?>
+      <?php require 'Menu.html' ?>
       <br> Bienvenido <?= $user['nombres']; ?>
       <br> Haz sido registrado,
       
