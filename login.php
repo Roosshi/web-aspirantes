@@ -11,7 +11,7 @@
     $records = $conn->prepare('SELECT id, curp, password FROM users WHERE curp = :curp');
     $records->bindParam(':curp', $_POST['curp']);
     $records->execute();
-    $results = $records->fetch(PDO::FETCH_ASSOC);
+    $results = $records->fetchall(PDO::FETCH_ASSOC);
 
     $message = '';
 
