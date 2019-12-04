@@ -47,16 +47,20 @@ CREATE TABLE `admin` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `curp` varchar(200) NOT NULL,
-  `password` varchar(200) NOT NULL
+  `password` varchar(200) NOT NULL,
+  `nombres` varchar(200) NOT NULL,
+  `apellido_paterno` varchar(200) NOT NULL,
+  `apellido_materno` varchar(200) NOT NULL,
+  `tipo` varchar(200) NOT NULL,
+  `carrera` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `curp`, `password`) VALUES
-(11, 'BEFR960912HSRLLM01', '$2y$10$aKrHRddYtwU7lPm2yfZ8D.L/t0sx33sf8UoAC1.vAQDaTozCFz.x6'),
-(12, 'VEFR960912HSRLLM01', '$2y$10$YX4qY7N1Ba2h4zk8bUnhX.kRP2b90fBERv5QWWaveZzFaTebSE5Hy');
+INSERT INTO `users` (`id`, `curp`, `password`, `nombres`, `apellido_paterno`, `apellido_materno`, `tipo`, `carrera`) VALUES
+(1, 'BEFR960912HSRLLM01', '$2y$10$aKrHRddYtwU7lPm2yfZ8D.L/t0sx33sf8UoAC1.vAQDaTozCFz.x6', 'Romualdo', 'Beltran', 'Felix', 'aspirante', 'Ing. en sistemas');
 
 --
 -- Índices para tablas volcadas
