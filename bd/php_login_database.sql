@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-10-2019 a las 23:01:25
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.3.10
+-- Tiempo de generación: 03-12-2019 a las 05:33:40
+-- Versión del servidor: 10.1.36-MariaDB
+-- Versión de PHP: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,22 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `php_login_database`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `nocontrol` int(200) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `nombres` varchar(200) NOT NULL,
+  `apellido_paterno` varchar(200) NOT NULL,
+  `apellido_materno` varchar(200) NOT NULL,
+  `es_admin` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -46,10 +62,15 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `curp`, `password`, `nombres`, `apellido_paterno`, `apellido_materno`, `tipo`, `carrera`) VALUES
 (1, 'BEFR960912HSRLLM01', '$2y$10$aKrHRddYtwU7lPm2yfZ8D.L/t0sx33sf8UoAC1.vAQDaTozCFz.x6', 'Romualdo', 'Beltran', 'Felix', 'aspirante', 'Ing. en sistemas');
 
--- UPDATE users SET tipousuario = "administrador" where curp = "david25";
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `users`
@@ -62,10 +83,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

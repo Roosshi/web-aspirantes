@@ -2,14 +2,11 @@
   session_start();
 
 	require 'database.php';
-	
 	require 'queries.php';
-	//Obtiene la lista de aspirantes de la bd y la asigna a $results
+	
 	$results = obtenerAspirantes($conn);
 
-	//Busca el usuario actual y lo asigna a $user
-	$user = obtenerUsuarioActual($results);
-
+	$user = obtenerAdministrador($conn, $_SESSION['user_id']);
 ?>
 
 <!DOCTYPE html>
@@ -27,10 +24,12 @@
 		<?php require 'Menu.html' ?>
 
 		<?php
-			if(!($user['tipo'] == 'aspirante')):
+			// if($user['es_admin']):
+			if($_SESSION['user_id']):
 		?>
 
 			<h1>Buscar aspirantes</h1>
+			<span>Despues de terminar, descomenta el otro if de php.</span>
 
 			<div class="container">
 				<table class="table">
