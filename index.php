@@ -4,10 +4,10 @@
   require 'database.php';
 
   if (isset($_SESSION['user_id'])) {
-    $records = $conn->prepare('SELECT * password FROM users WHERE id = :id');
+    $records = $conn->prepare('SELECT * FROM users WHERE id = :id');
     $records->bindParam(':id', $_SESSION['user_id']);
     $records->execute();
-    $results = $records->fetchall(PDO::FETCH_ASSOC);
+    $results = $records->fetch(PDO::FETCH_ASSOC);
 
     $user = null;
 
@@ -23,6 +23,7 @@
     <meta charset="utf-8">
     <title>ITH | Registro de Aspirantes</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>

@@ -52,9 +52,9 @@ CREATE TABLE `users` (
   `apellido_paterno` varchar(200) NOT NULL,
   `apellido_materno` varchar(200) NOT NULL,
   `tipo` varchar(200) NOT NULL,
-  `carrera` varchar(200) NOT NULL,
-  `observaciones` varchar(200) NOT NULL
+  `carrera` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Volcado de datos para la tabla `users`
 --

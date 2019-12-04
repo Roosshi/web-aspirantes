@@ -11,7 +11,7 @@
     $records = $conn->prepare('SELECT id, curp, password FROM users WHERE curp = :curp');
     $records->bindParam(':curp', $_POST['curp']);
     $records->execute();
-    $results = $records->fetchall(PDO::FETCH_ASSOC);
+    $results = $records->fetch(PDO::FETCH_ASSOC);
 
     $message = '';
 
@@ -31,6 +31,7 @@
     <meta charset="utf-8">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
