@@ -26,14 +26,14 @@
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
-    <?php require 'partials/header.php' ?>
-
+    
     <?php if(!empty($user)): ?>
-      <br> Bienvenido <?= $user['curp']; ?>
-      <br>Haz sido registrado, cierra sesión en
-      <a href="logout.php">
-        Salir
-      </a>
+      <?php require 'Menu.html' ?>
+      <br> Bienvenido <?= $user['nombres']; ?>
+      <br> Haz sido registrado,
+      
+      <a href="checkup.php">Verifica tus datos</a> o
+      <a href="logout.php"> Cierra sesión </a>
     <?php else: ?>
       <h1>Por favor, selecciona una opción</h1>
 
