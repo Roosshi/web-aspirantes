@@ -6,7 +6,7 @@
 
   if (!empty($_POST['nocontrol']) && !empty($_POST['password'])) {
     $sql = "INSERT INTO admin (nocontrol, password, nombres, apellido_paterno, apellido_materno, tipo, carrera) 
-    VALUES (:nocontrol, :password, :nombres, :apellido_paterno, :apellido_materno, 'supervisor', :carrera)";
+    VALUES (:nocontrol, :password, :nombres, :apellido_paterno, :apellido_materno, '1', :carrera)";
     $stmt = $conn->prepare($sql);
 
     $stmt->bindParam(':nocontrol', $_POST['nocontrol']);
