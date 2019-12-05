@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-  $USER_ID = $_SESSION['user_id']; 
+   
   require 'database.php';
 
   if (isset($_SESSION['user_id'])) {
@@ -14,6 +14,27 @@
 
     if (count($results) > 0) {
       $user = $results;
+      $USER_ID = $_SESSION['user_id'];
+      $tipousuario = "SELECT tipo FROM users WHERE id = ?";
+$consultatipo = $conn->prepare($tipousuario);
+$consultatipo->execute(array($USER_ID));
+$tipo = $consultatipo->fetch(PDO::FETCH_ASSOC);
+    }
+  }else if (isset($_SESSION['admin_id'])) {
+    $records = $conn->prepare('SELECT * FROM admin WHERE id = :id');
+    $records->bindParam(':id', $_SESSION['admin_id']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
+
+    $user = null;
+
+    if (count($results) > 0) {
+      $user = $results;
+      $USER_ID = $_SESSION['admin_id'];
+      $tipousuario = "SELECT tipo FROM admin WHERE id = ?";
+$consultatipo = $conn->prepare($tipousuario);
+$consultatipo->execute(array($USER_ID));
+$tipo = $consultatipo->fetch(PDO::FETCH_ASSOC);
     }
   }
 ?>
@@ -32,7 +53,17 @@
 </head>
 <body>
 
-    <?php require 'Menu.html' ?>
+<?php
+
+  
+  if($tipo['tipo'] == 1){
+
+    require 'Menu.html'; 
+  } else{
+    require 'MenuASP.html';
+  }
+  
+  ?>
     
     <?php if(!empty($user)):?>
         
@@ -55,14 +86,14 @@
             <?php
 
 //$sql = "SELECT id,curp, nombres, apellido_paterno, apellido_materno, carrera FROM users WHERE id = ?";
-$tipousuario = "SELECT tipo FROM users WHERE id = ?";
+//$tipousuario = "SELECT tipousuario FROM users WHERE id = ?";
 
-$consultatipo = $conn->prepare($tipousuario);
+/*$consultatipo = $conn->prepare($tipousuario);
 $consultatipo->execute(array($USER_ID));
 $tipo = $consultatipo->fetch(PDO::FETCH_ASSOC);
+*/
 
-
-if($tipo['tipo'] == "administrador"){
+if($tipo['tipo'] == 1){
 $sql = "SELECT * FROM users";
 $consulta = $conn->prepare($sql);
 
@@ -85,10 +116,23 @@ $consulta->execute();
             <td ><?php echo $mostrar['apellido_paterno']?></td>
             <td  ><?php echo $mostrar['apellido_materno']?></td>
             <td  ><?php echo $mostrar['carrera']?></td>
+            
+            
+
         </tr>
         <?php
+          
         }
         ?>
+         
+         
+         
+         
+         
+         
+         
+         
+         
           </tbody>
         </table>
       </div>

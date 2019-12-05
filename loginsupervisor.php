@@ -2,26 +2,26 @@
 
   session_start();
 
-  if (isset($_SESSION['user_id'])) {
+  if (isset($_SESSION['admin_id'])) {
     header('Location: /web-aspirantes');
   }
   require 'database.php';
 
-  if (!empty($_POST['curp']) && !empty($_POST['password'])) {
-    $records = $conn->prepare('SELECT id, curp, password FROM users WHERE curp = :curp');
-    $records->bindParam(':curp', $_POST['curp']);
+  if (!empty($_POST['nocontrol']) && !empty($_POST['password'])) {
+    $records = $conn->prepare('SELECT id, nocontrol, password FROM admin WHERE nocontrol = :nocontrol');
+    $records->bindParam(':nocontrol', $_POST['nocontrol']);
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
 
     $message = '';
 
     if (count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
-      $_SESSION['user_id'] = $results['id'];
-      header("Location: /web-aspirantes");
-    } else {
-      $message = 'Sus datos están incorrectos';
+        $_SESSION['admin_id'] = $results['id'];
+        header("Location: /web-aspirantes");
+      } else{
+        $message = 'Sus datos están incorrectos';
+      }
     }
-  }
 
 ?>
 
@@ -42,9 +42,10 @@
     <?php endif; ?>
 
     <h1>Inicio de Sesión</h1>
+    
 
-    <form action="login.php" method="POST">
-      <input name="curp" type="text" placeholder="CURP">
+    <form action="loginsupervisor.php" method="POST">
+      <input name="nocontrol" type="text" placeholder="NOCONTROL">
       <input name="password" type="password" placeholder="Contraseña">
       <input type="submit" value="Ingresar">
     </form>

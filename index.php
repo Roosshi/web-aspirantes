@@ -14,7 +14,19 @@
     if (count($results) > 0) {
       $user = $results;
     }
+  }else if (isset($_SESSION['admin_id'])) {
+    $records = $conn->prepare('SELECT * FROM admin WHERE id = :id');
+    $records->bindParam(':id', $_SESSION['admin_id']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
+
+    $user = null;
+
+    if (count($results) > 0) {
+      $user = $results;
+    }
   }
+  
 ?>
 
 <!DOCTYPE html>
@@ -28,8 +40,14 @@
   </head>
   <body>
     
+
     <?php if(!empty($user)): ?>
-      <?php require 'Menu.html' ?>
+      <?php if($results['tipo']==1){
+        require 'Menu.html';
+      }else{
+        require 'MenuASP.html';
+      }
+      ?>
       <br> Bienvenido <?= $user['nombres']; ?>
       <br> Haz sido registrado,
       
@@ -38,8 +56,9 @@
     <?php else: ?>
       <h1>Por favor, selecciona una opción</h1>
 
-      <a href="login.php">Iniciar Sesión</a> o
-      <a href="signup.php">Registrar Aspirante</a>
+      <a href="login.php">Aspirante </a> o
+      <a href="loginsupervisor.php">Supervisor</a>
+      
     <?php endif; ?>
   </body>
 </html>
