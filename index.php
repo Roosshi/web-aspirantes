@@ -31,6 +31,7 @@
 
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8">
     <title>ITH | Registro de Aspirantes</title>
@@ -59,6 +60,8 @@
       <a href="login.php">Aspirante </a> o
       <a href="loginsupervisor.php">Supervisor</a>
       
-    <?php endif; ?>
+    <?php endif;
+    require 'MenuFooter.html';
+    ?>
   </body>
 </html>

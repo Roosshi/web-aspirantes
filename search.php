@@ -6,7 +6,7 @@
 	
 	$results = obtenerAspirantes($conn);
 
-	$user = obtenerAdministrador($conn, $_SESSION['user_id']);
+	$user = obtenerAdministrador($conn, $_SESSION['admin_id']);
 ?>
 
 <!DOCTYPE html>

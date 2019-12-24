@@ -44,3 +44,10 @@ header a {
   text-decoration: none;
   color: #333;
 }
+
+footer {
+  border-top: 2px solid #eee;
+  width: 100%;
+  text-align: center;
+  margin-top: 60vh;
+}
